@@ -56,7 +56,7 @@ WITH AvailableBalanceCTE_Transactions AS
 	   ,@StartDate ContributedDateHour
 	   ,CAST(1 as bigint) Ranker
 	FROM FACT_LastUserBalances UB With (Nolock)
-	WHERE DATEADD(DAY,1,EndOfTheDay) <= @StartDate and User_Key in (select UserKey FROM FACT_Transactions with (Nolock) WHERE TransactionDateTime > @StartDate and TransactionDateTime <= @BaseDay)
+	WHERE DATEADD(DAY,1,EndOfTheDay) <= @StartDate
 	),
 	CrossJoinedDummyData_Transactions AS
 	(
